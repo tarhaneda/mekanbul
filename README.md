@@ -8,17 +8,17 @@ Bu proje, Web Teknolojileri ve Programlama dersi kapsamında geliştirilen, **Ba
 
 Bu uygulama, standart CRUD işlemlerinin ötesinde, güvenlik ve rol tabanlı yönetim özellikleri içerir. Ödev gereksinimlerine uygun olarak aşağıdaki yeteneklere sahiptir:
 
-* **🔐 Kimlik Doğrulama (JWT):** JSON Web Token altyapısı ile güvenli giriş ve kayıt sistemi.
-* **👤 Rol Yönetimi (User & Admin):** Sistemde "User" ve "Admin" olmak üzere iki farklı rol bulunur.
-* **🛠️ Yönetici Paneli (Admin Dashboard):**
+* **Kimlik Doğrulama (JWT):** JSON Web Token altyapısı ile güvenli giriş ve kayıt sistemi.
+* **Rol Yönetimi (User & Admin):** Sistemde "User" ve "Admin" olmak üzere iki farklı rol bulunur.
+* **Yönetici Paneli (Admin Dashboard):**
     * Sadece `admin` yetkisine sahip kullanıcılar erişebilir.
     * Mekan ekleme, silme ve güncelleme işlemleri buradan yönetilir.
     * Konumdan bağımsız tüm mekanlar listelenir.
-* **🛡️ Güvenlik ve Korumalı Rotalar:** Admin sayfalarına yetkisiz erişim engellenmiştir.
-* **⏱️ Oturum Güvenliği:** Admin panelinde 10 saniye hareketsizlik durumunda otomatik çıkış yapılır.
-* **💬 Yorum Sistemi:** Sadece giriş yapmış kayıtlı kullanıcılar mekanlara yorum yapabilir.
+* **Güvenlik ve Korumalı Rotalar:** Admin sayfalarına yetkisiz erişim engellenmiştir.
+* **Oturum Güvenliği:** Admin panelinde 10 saniye hareketsizlik durumunda otomatik çıkış yapılır.
+* **Yorum Sistemi:** Sadece giriş yapmış kayıtlı kullanıcılar mekanlara yorum yapabilir.
 
-## 🛠️ Teknolojiler
+##  Teknolojiler
 
 * **Backend:** Node.js, Express.js
 * **Veritabanı:** MongoDB (Mongoose)
@@ -70,7 +70,7 @@ Kullanıcıların mekanlara yorum yapması ve yönetmesi.
 
 ---
 
-### 📝 API Uç Noktaları (Özet)
+###  API Uç Noktaları (Özet)
 
 * `GET /api/venues` - Mekanları listeler (Konum bazlı)
 * `POST /api/venues` - Yeni mekan ekler (Admin Token gerekir)
