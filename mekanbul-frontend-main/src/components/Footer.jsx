@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer>
-      <small>&copy; Asım Sinan Yüksel 2025</small>
+      <small>&copy; Eda Nur Tarhan 2025</small>
     </footer>
   );
 }
