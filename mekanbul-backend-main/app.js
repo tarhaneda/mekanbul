@@ -31,5 +31,4 @@ app.use("/api", apiRoute);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// Export for Vercel serverless
 module.exports = app;

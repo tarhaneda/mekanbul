@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 require('dotenv').config();
 var dbURI = process.env.dbURI;
 
-// Connect to MongoDB (removed deprecated options for Mongoose 6+)
+
 mongoose.connect(dbURI);
 
 mongoose.connection.on("connected", function () {
@@ -15,7 +15,7 @@ mongoose.connection.on("disconnected", function () {
     console.log("Mongoose bağlantısı kesildi.");
 });
 
-// Graceful shutdown - only in non-serverless environment
+
 if (process.env.VERCEL !== '1') {
     process.on("SIGINT", function () {
         mongoose.connection.close();

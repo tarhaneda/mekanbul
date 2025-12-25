@@ -31,15 +31,13 @@ var doAddYorum = async function (req, res, mekan, author) {
     } else {
         mekan.comments.push({
             author: author,
-            rating: req.body.rating,
+            rating: parseInt(req.body.rating, 10),
             text: req.body.text
         });
 
-        // Ortalama puanı hesapla
         if (mekan.comments && mekan.comments.length > 0) {
             const totalRating = mekan.comments.reduce((acc, comment) => acc + comment.rating, 0);
-            mekan.rating = totalRating / mekan.comments.length; // Ortalama hesapla
-            // Virgülden sonra 1 basamak olacak şekilde yuvarla (opsiyonel, frontend de yapabilir ama veritabanında temiz durur)
+            mekan.rating = totalRating / mekan.comments.length; 
             mekan.rating = parseFloat(mekan.rating.toFixed(1));
         }
 
@@ -109,11 +107,7 @@ var yorumGuncelle = async function (req, res) {
         return;
     }
     try {
-        const mekan = await Mekan.findById(req.params.mekanid).exec(); // Removed .select('comments') to allow saving parent
-        // Note: select('comments') restricts the document, but save() works on the document. 
-        // Best practice to load full document for updates or handle carefully. 
-        // However, select('comments') should be fine if we only modify comments array.
-        // Let's stick safe and just load it.
+        const mekan = await Mekan.findById(req.params.mekanid).exec(); 
 
         if (!mekan) {
             cevapOlustur(res, 404, { "mesaj": "Mekan bulunamadı" });
@@ -131,7 +125,6 @@ var yorumGuncelle = async function (req, res) {
 
                 try {
                     const savedMekan = await mekan.save();
-                    // Return the updated comment
                     const updatedYorum = savedMekan.comments.id(req.params.yorumid);
                     cevapOlustur(res, 200, updatedYorum);
                 } catch (err) {
@@ -159,16 +152,12 @@ var yorumSil = async function (req, res) {
         }
 
         if (mekan.comments && mekan.comments.length > 0) {
-            /* 
-               Mongoose 7/8 deprecation warning: 
-               subdocument .remove() might be deprecated or behave differently.
-               Using invalidation method: mekan.comments.pull(id) 
-            */
+           
             const yorum = mekan.comments.id(req.params.yorumid);
             if (!yorum) {
                 cevapOlustur(res, 404, { "mesaj": "Yorum bulunamadı" });
             } else {
-                mekan.comments.pull(req.params.yorumid); // Correct way to remove subdoc in newer mongoose
+                mekan.comments.pull(req.params.yorumid);
                 try {
                     await mekan.save();
                     cevapOlustur(res, 200, { "status": "success", "mesaj": "Yorum başarıyla silindi" });

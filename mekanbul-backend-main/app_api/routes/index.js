@@ -5,7 +5,7 @@ var ctrlYorumlar = require("../controllers/yorumlar");
 var ctrlAuth = require("../controllers/authentication");
 var jwt = require('jsonwebtoken');
 
-// Auth Middleware
+
 var authenticate = function (req, res, next) {
     var authHeader = req.headers['authorization'];
     var token = authHeader && authHeader.split(' ')[1];
@@ -25,38 +25,36 @@ var isAdmin = function (req, res, next) {
     }
 };
 
-// Auth Routes
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
-// Admin Route
+
 router
     .route("/admin/mekanlar")
     .get(authenticate, isAdmin, ctrlMekanlar.adminMekanlariListele);
 
-// Public Routes
+
 router
     .route("/mekanlar")
     .get(ctrlMekanlar.mekanlariListele)
-    // Protected Admin Routes
+   
     .post(authenticate, isAdmin, ctrlMekanlar.mekanEkle);
 
 router
     .route("/mekanlar/:mekanid")
     .get(ctrlMekanlar.mekanGetir)
-    // Protected Admin Routes
+    
     .put(authenticate, isAdmin, ctrlMekanlar.mekanGuncelle)
     .delete(authenticate, isAdmin, ctrlMekanlar.mekanSil);
 
-// Comment Routes
 router
     .route("/mekanlar/:mekanid/yorumlar")
-    .post(authenticate, ctrlYorumlar.yorumEkle); // Require auth for comments
+    .post(authenticate, ctrlYorumlar.yorumEkle); 
 
 router
     .route("/mekanlar/:mekanid/yorumlar/:yorumid")
     .get(ctrlYorumlar.yorumGetir)
-    .put(authenticate, ctrlYorumlar.yorumGuncelle) // Optional: restrict to owner or admin
+    .put(authenticate, ctrlYorumlar.yorumGuncelle)
     .delete(authenticate, ctrlYorumlar.yorumSil);
 
 module.exports = router;
