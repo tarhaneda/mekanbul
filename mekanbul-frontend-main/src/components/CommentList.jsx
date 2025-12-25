@@ -1,4 +1,4 @@
-import Comment from "./Comment"; i
+import Comment from "./Comment"; 
 
 const CommentList = ({ commentList }) => {
   return commentList.map((comment, index) => (
