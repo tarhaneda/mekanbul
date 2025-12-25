@@ -1,25 +1,18 @@
-// Gerekli bileşenleri ve kütüphaneleri içe aktar
-import Header from "./Header"; // Sayfa başlığı bileşeni
+import Header from "./Header"; 
 import React from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom"; // Router hook'ları
-import VenueDataService from "../services/VenueDataService"; // API servisi
-import { useDispatch } from "react-redux"; // Redux state yönetimi
+import { useParams, useLocation, useNavigate } from "react-router-dom"; 
+import VenueDataService from "../services/VenueDataService"; 
+import { useDispatch } from "react-redux"; 
 
-// Yorum ekleme sayfası bileşeni
 function AddComment() {
-  // URL'den mekan ID'sini al (örn: /venue/123/comment/new -> id = 123)
   const { id } = useParams();
 
-  // Bir önceki sayfadan gelen bilgiyi almak için kullanılır (mekan adı vb.)
   const location = useLocation();
 
-  // Redux kullanımı - State'i güncellemek için
   const dispatch = useDispatch();
 
-  // Sayfa yönlendirme işlemleri için kullanılır
   const navigate = useNavigate();
 
-  // Form gönderildiğinde çalışan fonksiyon
   const user = JSON.parse(localStorage.getItem("user"));
 
   const onSubmit = (evt) => {
@@ -49,18 +42,15 @@ function AddComment() {
 
   return (
     <>
-      {/* Sayfa başlığı - Önceki sayfadan gelen mekan adını göster */}
       <Header headerText={location.state.name} motto=" mekanına yorum yap" />
 
       <div className="row">
         <div className="col-xs-12 col-md-6">
-          {/* Yorum ekleme formu */}
           <form
             className="form-horizontal"
             id="yorumEkle"
             onSubmit={(evt) => onSubmit(evt)}
           >
-            {/* İsim alanı (Otomatik doldurulur) */}
             <div className="form-group">
               <label className="col-sm-2 control-label">İsim:</label>
               <div className="col-sm-10">
@@ -74,7 +64,6 @@ function AddComment() {
               </div>
             </div>
 
-            {/* Puan seçimi (1-5 arası) */}
             <div className="form-group">
               <label className="col-xs-10 col-sm-2 control-label">
                 Puan:
@@ -94,7 +83,6 @@ function AddComment() {
               </div>
             </div>
 
-            {/* Yorum metni alanı */}
             <div className="form-group">
               <label className="col-sm-2 control-label">Yorum:</label>
               <div className="col-sm-10">
@@ -106,7 +94,6 @@ function AddComment() {
               </div>
             </div>
 
-            {/* Form gönderme butonu */}
             <button className="btn btn-default pull-right">Yorum Ekle</button>
           </form>
         </div>
@@ -116,5 +103,4 @@ function AddComment() {
   );
 }
 
-// Bileşeni dışa aktar
 export default AddComment;

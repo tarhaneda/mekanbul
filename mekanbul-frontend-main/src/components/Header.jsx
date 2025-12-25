@@ -1,13 +1,11 @@
-// Sayfa başlığı bileşeni - Başlık metni ve slogan gösterir
 function Header({headerText, motto}) {
     return (
         <div className="page-header">
         <div className="row">
           <div className="col-lg-6">
-            {/* Ana başlık ve alt başlık (slogan) */}
             <h1>
-              {headerText} {/* Ana başlık metni (örn: "Mekanbul") */}
-              <small>{motto}</small> {/* Slogan (küçük yazı ile gösterilir) */}
+              {headerText} 
+              <small>{motto}</small> 
             </h1>
           </div>
         </div>
@@ -15,6 +13,5 @@ function Header({headerText, motto}) {
     );
   }
 
-// Bileşeni dışa aktar
 export default Header;
   

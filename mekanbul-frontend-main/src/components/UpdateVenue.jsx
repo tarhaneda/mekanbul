@@ -13,7 +13,7 @@ const UpdateVenue = () => {
         foodanddrink: "",
         lat: "",
         long: "",
-        hours: [] // Dizi olarak tutuyoruz
+        hours: [] 
     });
 
     useEffect(() => {
@@ -28,7 +28,6 @@ const UpdateVenue = () => {
         VenueDataService.getVenue(id)
             .then((response) => {
                 const v = response.data;
-                // Eğer hiç saat verisi yoksa en az bir tane boş ekleyelim
                 const hoursData = v.hours && v.hours.length > 0
                     ? v.hours
                     : [{ days: "", open: "", close: "", isClosed: false }];
@@ -47,17 +46,15 @@ const UpdateVenue = () => {
             });
     };
 
-    // Genel inputlar
     const handleInputChange = (event) => {
         const { name, value, type, checked } = event.target;
         setVenue({ ...venue, [name]: type === 'checkbox' ? checked : value });
     };
 
-    // Saatler için input değişimi
     const handleHourChange = (index, event) => {
         const { name, value, type, checked } = event.target;
         const newHours = [...venue.hours];
-        newHours[index][name] = type === 'checkbox' ? checked : value; // isClosed gibi checkboxlar için
+        newHours[index][name] = type === 'checkbox' ? checked : value; 
         setVenue({ ...venue, hours: newHours });
     };
 

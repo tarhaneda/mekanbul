@@ -10,7 +10,6 @@ const AddVenue = () => {
         foodanddrink: "",
         lat: "",
         long: "",
-        // Tekil alanları kaldırıp diziye geçiyoruz
         hours: [
             { days: "", open: "", close: "", isClosed: false }
         ]
@@ -19,13 +18,11 @@ const AddVenue = () => {
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("user"));
 
-    // Genel input değişimi (name, address, vb.)
     const handleInputChange = (event) => {
         const { name, value, type, checked } = event.target;
         setVenue({ ...venue, [name]: type === 'checkbox' ? checked : value });
     };
 
-    // Saatler dizisindeki belirli bir elemanın değişimi
     const handleHourChange = (index, event) => {
         const { name, value, type, checked } = event.target;
         const newHours = [...venue.hours];
@@ -33,7 +30,6 @@ const AddVenue = () => {
         setVenue({ ...venue, hours: newHours });
     };
 
-    // Yeni saat aralığı ekle
     const addHourSlot = () => {
         setVenue({
             ...venue,
@@ -41,7 +37,7 @@ const AddVenue = () => {
         });
     };
 
-    // Saat aralığını sil
+    
     const removeHourSlot = (index) => {
         const newHours = venue.hours.filter((_, i) => i !== index);
         setVenue({ ...venue, hours: newHours });
@@ -59,7 +55,7 @@ const AddVenue = () => {
             address: venue.address,
             foodanddrink: venue.foodanddrink.split(","),
             coordinates: [parseFloat(venue.long), parseFloat(venue.lat)],
-            hours: venue.hours // Direkt diziyi gönderiyoruz
+            hours: venue.hours 
         };
 
         VenueDataService.addVenue(data, user.token)

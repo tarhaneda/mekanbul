@@ -16,14 +16,14 @@ const Register = () => {
             await VenueDataService.register({ name, email, password });
             navigate("/login");
         } catch (error) {
-            console.log(error); // Konsola da detaylı bas
+            console.log(error);
             if (error.response && error.response.data) {
-                // Backend'den gelen hata (nested)
+               
                 if (error.response.data.error && error.response.data.error.code === 11000) {
                     setMessage("Bu e-posta adresi zaten kullanımda.");
                 }
                 else if (error.response.data.message) {
-                    // Ana mesajı ve varsa detayını göster
+                    
                     let detailedMsg = error.response.data.message;
                     if (error.response.data.error && error.response.data.error.message) {
                         detailedMsg += " (" + error.response.data.error.message + ")";

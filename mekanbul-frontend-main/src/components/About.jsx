@@ -1,11 +1,9 @@
-// Gerekli bileşenleri içe aktar
-import Header from "./Header"; // Sayfa başlığı bileşeni
+import Header from "./Header"; i
 
-// Hakkında sayfası bileşeni - Uygulama hakkında bilgi gösterir
 function About() {
   return (
     <div>
-      {/* Sayfa başlığı ve slogan */}
+      
       <Header
         headerText="Mekanbul"
         motto="ReactJS Single Page Application (SPA)"
@@ -14,5 +12,5 @@ function About() {
   );
 }
 
-// Bileşeni dışa aktar
+
 export default About;
