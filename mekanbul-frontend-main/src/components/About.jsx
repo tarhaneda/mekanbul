@@ -1,4 +1,4 @@
-import Header from "./Header"; i
+import Header from "./Header"; 
 
 function About() {
   return (
