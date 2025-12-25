@@ -15,7 +15,7 @@ const Comment = ({ comment, index }) => {
           <span className="review-author">{comment.author}</span>
           &nbsp; 
           
-          <small className="reviewTimestamp">{formatDate((comment.timestamp || comment.createdOn))}</small>
+          <small className="reviewTimestamp">{formatDate((new Date()))}</small>
         </div>
         
         <div className="col-xs-12 ">{comment.text}</div>
