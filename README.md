@@ -4,6 +4,9 @@ Bu proje, Web Teknolojileri ve Programlama dersi kapsamında geliştirilen, **Ba
 
 🔗 **Canlı Demo:** [mekanlar.vercel.app](https://mekanbul-wct2.vercel.app/)
 
+
+🔗**Backend Adresi:**[mekanlar.vercel.app](https://mekanbul-liard.vercel.app/)
+
 ## 🚀 Proje Hakkında ve Özellikler
 
 Bu uygulama, standart CRUD işlemlerinin ötesinde, güvenlik ve rol tabanlı yönetim özellikleri içerir. Ödev gereksinimlerine uygun olarak aşağıdaki yeteneklere sahiptir:
