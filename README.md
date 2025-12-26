@@ -2,7 +2,7 @@
 
 Bu proje, Web Teknolojileri ve Programlama dersi kapsamında geliştirilen, **Backend** ve **Frontend** mimarisini içeren kapsamlı bir mekan rehberi uygulamasıdır.
 
-🔗 **Canlı Demo:** [mekanlar.vercel.app](https://mekanbul-wct2.vercel.app/)
+🔗 **Frontend Adresi:** [mekanlar.vercel.app](https://mekanbul-wct2.vercel.app/)
 
 
 🔗**Backend Adresi:**[mekanlar.vercel.app](https://mekanbul-liard.vercel.app/)
